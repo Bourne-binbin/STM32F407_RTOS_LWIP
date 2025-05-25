@@ -33,6 +33,7 @@ f407new\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 f407new\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 f407new\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 f407new\stm32f4xx_it.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+f407new\stm32f4xx_it.o: ../Inc/tcpecho.h
 f407new\stm32f4xx_it.o: ../Inc/stm32f4xx_it.h
 f407new\stm32f4xx_it.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 f407new\stm32f4xx_it.o: ../Inc/FreeRTOSConfig.h

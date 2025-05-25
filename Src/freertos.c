@@ -142,7 +142,6 @@ void SCI_FUNC(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-		printf("uart:printf\n");
     osDelay(1);
   }
   /* USER CODE END SCI_FUNC */

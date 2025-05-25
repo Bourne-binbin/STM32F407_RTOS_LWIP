@@ -35,6 +35,7 @@ f407new\ip6_frag.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 f407new\ip6_frag.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 f407new\ip6_frag.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 f407new\ip6_frag.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+f407new\ip6_frag.o: ../Inc/tcpecho.h
 f407new\ip6_frag.o: ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h
 f407new\ip6_frag.o: ../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h
 f407new\ip6_frag.o: ../Middlewares/Third_Party/LwIP/system/arch/cc.h

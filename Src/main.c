@@ -95,6 +95,8 @@ int main(void)
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   MX_LWIP_Init();
+	tcpecho_init();
+	printf("RTOS_LWIP: Start\n");
 	//tcpecho_init();
   /* USER CODE END 2 */
 

@@ -9,6 +9,7 @@
 "f407new\stm32f4xx_it.o"
 "f407new\stm32f4xx_hal_msp.o"
 "f407new\stm32f4xx_hal_timebase_tim.o"
+"f407new\tcpecho.o"
 "f407new\stm32f4xx_hal_eth.o"
 "f407new\stm32f4xx_hal_tim.o"
 "f407new\stm32f4xx_hal_tim_ex.o"

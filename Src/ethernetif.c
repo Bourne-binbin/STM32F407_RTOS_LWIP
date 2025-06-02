@@ -620,12 +620,16 @@ void ethernetif_set_link(void const *argument)
     if(!netif_is_link_up(link_arg->netif) && (regvalue))
     {
       /* network cable is connected */ 
-      netif_set_link_up(link_arg->netif);        
+      netif_set_link_up(link_arg->netif);
+			netif_set_up(link_arg->netif);
+			printf("eth connect\n");
     }
     else if(netif_is_link_up(link_arg->netif) && (!regvalue))
     {
       /* network cable is dis-connected */
       netif_set_link_down(link_arg->netif);
+			netif_set_down(link_arg->netif);
+			printf("eth disconnect\n");
     }
     
     /* Suspend thread for 200 ms */

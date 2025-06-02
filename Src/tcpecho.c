@@ -14,6 +14,7 @@
      err_t err;
 	   char test_buf1[]={"开始传输"};
 		 char test_buf2[]={"传输结束"};
+		 char end_symbol[]={""};
      LWIP_UNUSED_ARG(arg);
 			
      /* Create a new connection identifier. */
@@ -42,14 +43,12 @@
              struct netbuf *buf;
              void *data;
              u16_t len;
-
              while ((err = netconn_recv(newconn, &buf)) == ERR_OK) 
              {
-                 /*printf("Recved\n");*/
+                 printf("Recved\n");
                  do
                  {
 								 err= netconn_write(newconn, test_buf1, sizeof(test_buf1), NETCONN_COPY);
-									 
  #if 1
                      if (err != ERR_OK)
                      {
@@ -58,7 +57,7 @@
                      }
  #endif
                  
-                 netbuf_data(buf, &data, &len);              
+                 netbuf_data(buf, &data, &len);
                  err= netconn_write(newconn, data, len, NETCONN_COPY); 
  #if 1
                      if (err != ERR_OK)
@@ -69,7 +68,6 @@
  #endif
 										 
 								 err= netconn_write(newconn, test_buf2, sizeof(test_buf2), NETCONN_COPY);
-									 
  #if 1
                      if (err != ERR_OK)
                      {
@@ -82,7 +80,7 @@
                  while (netbuf_next(buf) >= 0);                      
                  netbuf_delete(buf);                         
              }
-             /*printf("Got EOF, looping\n");*/
+             printf("Got EOF, looping\n");
              /* Close connection and discard connection identifier. */
              netconn_close(newconn);                         
              netconn_delete(newconn);                                

@@ -39,6 +39,9 @@ extern UART_HandleTypeDef huart3;
 void MX_USART3_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
+int fputc(int ch, FILE *f);
+
+int fgetc(FILE *f);
 
 /* USER CODE END Prototypes */
 

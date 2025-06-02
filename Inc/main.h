@@ -35,6 +35,7 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
 #include "tcpecho.h"
+#include "usart.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

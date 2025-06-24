@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx,USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;     ../Middlewares/Third_Party/LwIP/src/include;     ../Middlewares/Third_Party/LwIP/system;     ../Drivers/STM32F4xx_HAL_Driver/Inc;     ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;     ../Middlewares/Third_Party/FreeRTOS/Source/include;     ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;     ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;     ../Middlewares/Third_Party/LwIP/src/include/netif/ppp;     ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;     ../Middlewares/Third_Party/LwIP/src/include/lwip;     ../Middlewares/Third_Party/LwIP/src/include/lwip/apps;     ../Middlewares/Third_Party/LwIP/src/include/lwip/priv;     ../Middlewares/Third_Party/LwIP/src/include/lwip/prot;     ../Middlewares/Third_Party/LwIP/src/include/netif;     ../Middlewares/Third_Party/LwIP/src/include/posix;     ../Middlewares/Third_Party/LwIP/src/include/posix/sys;     ../Middlewares/Third_Party/LwIP/system/arch;     ../Drivers/CMSIS/Include</IncludePath>
+              <IncludePath>../Inc;       ../Middlewares/Third_Party/LwIP/src/include;       ../Middlewares/Third_Party/LwIP/system;       ../Drivers/STM32F4xx_HAL_Driver/Inc;       ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;       ../Middlewares/Third_Party/FreeRTOS/Source/include;       ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;       ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;       ../Middlewares/Third_Party/LwIP/src/include/netif/ppp;       ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;       ../Middlewares/Third_Party/LwIP/src/include/lwip;       ../Middlewares/Third_Party/LwIP/src/include/lwip/apps;       ../Middlewares/Third_Party/LwIP/src/include/lwip/priv;       ../Middlewares/Third_Party/LwIP/src/include/lwip/prot;       ../Middlewares/Third_Party/LwIP/src/include/netif;       ../Middlewares/Third_Party/LwIP/src/include/posix;       ../Middlewares/Third_Party/LwIP/src/include/posix/sys;       ../Middlewares/Third_Party/LwIP/system/arch;       ../Drivers/CMSIS/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -422,6 +422,11 @@
           <GroupName>Application/User</GroupName>
           <Files>
             <File>
+              <FileName>tcpecho.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\tcpecho.c</FilePath>
+            </File>
+            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/main.c</FilePath>
@@ -465,16 +470,6 @@
               <FileName>stm32f4xx_hal_timebase_tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/stm32f4xx_hal_timebase_tim.c</FilePath>
-            </File>
-            <File>
-              <FileName>tcpecho.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\tcpecho.c</FilePath>
-            </File>
-            <File>
-              <FileName>tcpecho.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Inc\tcpecho.h</FilePath>
             </File>
           </Files>
         </Group>

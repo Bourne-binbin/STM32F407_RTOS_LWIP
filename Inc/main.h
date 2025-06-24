@@ -36,6 +36,7 @@ extern "C" {
 #include "stdio.h"
 #include "tcpecho.h"
 #include "usart.h"
+#include "cmsis_os.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -57,7 +58,7 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+extern osThreadId SCIHandle;
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

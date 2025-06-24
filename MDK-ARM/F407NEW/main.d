@@ -34,6 +34,8 @@ f407new\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 f407new\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 f407new\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 f407new\main.o: ../Inc/tcpecho.h
+f407new\main.o: ../Inc/usart.h
+f407new\main.o: ../Inc/main.h
 f407new\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 f407new\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 f407new\main.o: ../Inc/FreeRTOSConfig.h
@@ -48,6 +50,7 @@ f407new\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 f407new\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 f407new\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 f407new\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+f407new\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 f407new\main.o: ../Inc/lwip.h
 f407new\main.o: ../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h
 f407new\main.o: ../Inc/lwipopts.h
@@ -88,5 +91,5 @@ f407new\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 f407new\main.o: ../Inc/ethernetif.h
 f407new\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 f407new\main.o: ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h
-f407new\main.o: ../Inc/usart.h
 f407new\main.o: ../Inc/gpio.h
+f407new\main.o: D:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

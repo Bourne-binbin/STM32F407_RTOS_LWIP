@@ -1,5 +1,6 @@
 --cpu Cortex-M4.fp
 "f407new\startup_stm32f407xx.o"
+"f407new\tcpecho.o"
 "f407new\main.o"
 "f407new\gpio.o"
 "f407new\freertos.o"
@@ -9,7 +10,6 @@
 "f407new\stm32f4xx_it.o"
 "f407new\stm32f4xx_hal_msp.o"
 "f407new\stm32f4xx_hal_timebase_tim.o"
-"f407new\tcpecho.o"
 "f407new\stm32f4xx_hal_eth.o"
 "f407new\stm32f4xx_hal_tim.o"
 "f407new\stm32f4xx_hal_tim_ex.o"

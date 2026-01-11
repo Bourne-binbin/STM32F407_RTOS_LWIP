@@ -49,10 +49,11 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-#define RXBUFFERSIZE  256     //最大接收字节数
-char RxBuffer[RXBUFFERSIZE];   //接收数据
-uint8_t aRxBuffer;			//接收中断缓冲
-uint8_t Uart3_Rx_Cnt = 0;		//接收缓冲计数
+
+// #define RXBUFFERSIZE  256     //最大接收字节数
+// char RxBuffer[RXBUFFERSIZE];   //接收数据
+// uint8_t aRxBuffer;			//接收中断缓冲
+// uint8_t Uart3_Rx_Cnt = 0;		//接收缓冲计数
 
 /* USER CODE END PV */
 
@@ -99,11 +100,13 @@ int main(void)
   MX_GPIO_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-	HAL_UART_Receive_IT(&huart3, (uint8_t *)&aRxBuffer, 1);
+
+	// HAL_UART_Receive_IT(&huart3, (uint8_t *)&aRxBuffer, 1);
+  /* init code for LWIP */
   MX_LWIP_Init();
 	tcpecho_init();
-	printf("RTOS_LWIP: Start\n");
-	//tcpecho_init();
+	printf("RTOS_LWIP: Start\r\n");
+				
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
@@ -172,27 +175,27 @@ void SystemClock_Config(void)
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
   /* Prevent unused argument(s) compilation warning */
-//  BaseType_t xHigherPriorityTaskWoken = pdFALSE;
-//  vTaskNotifyGiveFromISR(SCIHandle, &xHigherPriorityTaskWoken);
-	if(Uart3_Rx_Cnt >= 255)  //溢出判断
-	{
-	 Uart3_Rx_Cnt = 0;
-	 memset(RxBuffer,0x00,sizeof(RxBuffer));
-	 HAL_UART_Transmit(&huart3, (uint8_t *)"数据溢出", 10,0xFFFF); 	
-	}
-	else
-	{
-	 RxBuffer[Uart3_Rx_Cnt++] = aRxBuffer;   //接收数据转存
+  
+	// if(Uart3_Rx_Cnt >= 255)  //溢出判断
+	// {
+	//  Uart3_Rx_Cnt = 0;
+	//  memset(RxBuffer,0x00,sizeof(RxBuffer));
+	//  HAL_UART_Transmit(&huart3, (uint8_t *)"数据溢出", 10,0xFFFF); 	
+	// }
+	// else
+	// {
+	//  RxBuffer[Uart3_Rx_Cnt++] = aRxBuffer;   //接收数据转存
 
-	 if((RxBuffer[Uart3_Rx_Cnt-1] == 0x0A)&&(RxBuffer[Uart3_Rx_Cnt-2] == 0x0D)) //判断结束位
-	 {
-		 HAL_UART_Transmit(&huart3, (uint8_t *)&RxBuffer, Uart3_Rx_Cnt,0xFFFF); //将收到的信息发送出去
-		 while(HAL_UART_GetState(&huart3) == HAL_UART_STATE_BUSY_TX);//检测UART发送结束
-		 Uart3_Rx_Cnt = 0;
-		 memset(RxBuffer,0x00,sizeof(RxBuffer)); //清空数组
-	 }
-	}
-	HAL_UART_Receive_IT(&huart3, (uint8_t *)&aRxBuffer, 1);   //再开启接收中断
+	//  if((RxBuffer[Uart3_Rx_Cnt-1] == 0x0A)&&(RxBuffer[Uart3_Rx_Cnt-2] == 0x0D)) //判断结束位
+	//  {
+	// 	 HAL_UART_Transmit(&huart3, (uint8_t *)&RxBuffer, Uart3_Rx_Cnt,0xFFFF); //将收到的信息发送出去
+	// 	 while(HAL_UART_GetState(&huart3) == HAL_UART_STATE_BUSY_TX);//检测UART发送结束
+	// 	 Uart3_Rx_Cnt = 0;
+	// 	 memset(RxBuffer,0x00,sizeof(RxBuffer)); //清空数组
+	//  }
+	// }
+	// HAL_UART_Receive_IT(&huart3, (uint8_t *)&aRxBuffer, 1);   //再开启接收中断
+
 }
 /* USER CODE END 4 */
 

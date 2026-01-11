@@ -41,27 +41,25 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-extern char RxBuffer[256];   //接收数据
-extern uint8_t aRxBuffer;			//接收中断缓冲
-extern uint8_t Uart3_Rx_Cnt;		//接收缓冲计数
+// extern char RxBuffer[256];   //接收数据
+// extern uint8_t aRxBuffer;			//接收中断缓冲
+// extern uint8_t Uart3_Rx_Cnt;		//接收缓冲计数
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-osThreadId SCIHandle;
-osThreadId NETHandle;
 osThreadId LEDHandle;
+osThreadId NETHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-   
+int num = 0;
 /* USER CODE END FunctionPrototypes */
 
-void SCI_FUNC(void const * argument);
-void NET_FUNC(void const * argument);
 void LED_FUNC(void const * argument);
+void NET_FUNC(void const * argument);
 
 extern void MX_LWIP_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -109,87 +107,18 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
-  /* definition and creation of SCI */
-  osThreadDef(SCI, SCI_FUNC, osPriorityRealtime, 0, 256);
-  SCIHandle = osThreadCreate(osThread(SCI), NULL);
+  /* definition and creation of LED */
+  osThreadDef(LED, LED_FUNC, osPriorityLow, 0, 128);
+  LEDHandle = osThreadCreate(osThread(LED), NULL);
 
   /* definition and creation of NET */
   osThreadDef(NET, NET_FUNC, osPriorityRealtime, 0, 256);
   NETHandle = osThreadCreate(osThread(NET), NULL);
 
-  /* definition and creation of LED */
-  osThreadDef(LED, LED_FUNC, osPriorityLow, 0, 128);
-  LEDHandle = osThreadCreate(osThread(LED), NULL);
-
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
-}
-
-/* USER CODE BEGIN Header_SCI_FUNC */
-/**
-* @brief Function implementing the SCI thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_SCI_FUNC */
-void SCI_FUNC(void const * argument)
-{
-    
-                 
-  /* init code for LWIP */
-  MX_LWIP_Init();
-
-  /* USER CODE BEGIN SCI_FUNC */
-  /* Infinite loop */
-  for(;;)
-  {
-//    ulTaskNotifyTake(pdTRUE,portMAX_DELAY);
-//    printf("SCI任务通知获取成功!\n");
-//		HAL_UART_Receive_IT(&huart3, (uint8_t *)&aRxBuffer, 1);
-//		printf("aRxBuffer = %d\n", aRxBuffer);
-//	 if(Uart3_Rx_Cnt >= 255)  //溢出判断
-//	 {
-//	  Uart3_Rx_Cnt = 0;
-//	  memset(RxBuffer,0x00,sizeof(RxBuffer));
-//	  HAL_UART_Transmit(&huart3, (uint8_t *)"数据溢出", 10,0xFFFF); 	
-//	 }
-//	 else
-//	 {
-//	  RxBuffer[Uart3_Rx_Cnt++] = aRxBuffer;   //接收数据转存
-
-//	  if((RxBuffer[Uart3_Rx_Cnt-1] == 0x0A)&&(RxBuffer[Uart3_Rx_Cnt-2] == 0x0D)) //判断结束位
-//	  {
-//	 	 printf("板子发出:\n");
-//	 	 HAL_UART_Transmit(&huart3, (uint8_t *)&RxBuffer, Uart3_Rx_Cnt,0xFFFF); //将收到的信息发送出去
-//	 				 while(HAL_UART_GetState(&huart3) == HAL_UART_STATE_BUSY_TX);//检测UART发送结束
-//	 	 Uart3_Rx_Cnt = 0;
-//	 	 memset(RxBuffer,0x00,sizeof(RxBuffer)); //清空数组
-//	  }
-//	 }
-		 osDelay(1);
-	}
-  /* USER CODE END SCI_FUNC */
-}
-
-/* USER CODE BEGIN Header_NET_FUNC */
-/**
-* @brief Function implementing the NET thread.
-* @param argument: Not used
-* @retval None
-*/
-/* USER CODE END Header_NET_FUNC */
-void NET_FUNC(void const * argument)
-{
-  /* USER CODE BEGIN NET_FUNC */
-  /* Infinite loop */
-  for(;;)
-  {
-//    ulTaskNotifyTake(pdTRUE,portMAX_DELAY);
-    osDelay(1);
-  }
-  /* USER CODE END NET_FUNC */
 }
 
 /* USER CODE BEGIN Header_LED_FUNC */
@@ -205,10 +134,36 @@ void LED_FUNC(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_YELLOW_Pin);
     osDelay(1000);
   }
   /* USER CODE END LED_FUNC */
+}
+
+/* USER CODE BEGIN Header_NET_FUNC */
+/**
+* @brief Function implementing the NET thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_NET_FUNC */
+void NET_FUNC(void const * argument)
+{
+  /* USER CODE BEGIN NET_FUNC */
+  /* Infinite loop */
+  for(;;)
+  {	
+  if(num == 0x55){
+	//if(num == 0){
+    HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);//turn off
+  }else if(num == 0xcc)
+	//}else if(num == 1)
+	{
+    HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);//turn on
+  }
+    osDelay(1);
+  }
+  /* USER CODE END NET_FUNC */
 }
 
 /* Private application code --------------------------------------------------*/
